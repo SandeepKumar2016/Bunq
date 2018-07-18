@@ -33,9 +33,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new CheeseListFragment(), "Category 2");
         adapter.addFragment(new CheeseListFragment(), "Category 3");
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(adapter.mFragments.size());
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -146,6 +144,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitles.get(position);
+        }
+
+        public void destroyItem(View container, int position, Object object) {
+            super.destroyItem(container, position, object);
+            mFragments.remove(position);
         }
     }
 }

@@ -17,4 +17,5 @@
 
 <resources>
     <color name="window_background">#FFF5F5F5</color>
+    <color name="error_msg_color">#a72f2f</color>
 </resources>
